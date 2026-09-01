@@ -9,6 +9,7 @@ import {
 } from '../lib/commercial-status';
 import type { Solicitacao } from '../lib/supabase-dashboard';
 import { QuoteBuilder } from './quote-builder';
+import { RequestHistory } from './request-history';
 import { SystemSidebar } from './system-sidebar';
 
 function formatDate(value: string) {
@@ -34,6 +35,7 @@ export function RequestDetail({
   );
   const [feedback, setFeedback] = useState('');
   const [saving, setSaving] = useState(false);
+  const [historyVersion, setHistoryVersion] = useState(0);
 
   async function updateStatus(nextStatus: CommercialStatus) {
     const previousStatus = status;
@@ -53,6 +55,7 @@ export function RequestDetail({
       const result = (await response.json()) as { message?: string };
       if (!response.ok) throw new Error(result.message || 'Falha ao atualizar.');
       setFeedback('Status atualizado com sucesso.');
+      setHistoryVersion((version) => version + 1);
     } catch (error) {
       setStatus(previousStatus);
       setFeedback(error instanceof Error ? error.message : 'Falha ao atualizar.');
@@ -124,8 +127,11 @@ export function RequestDetail({
           requestId={initialRequest.id}
           onBudgetStarted={() => {
             if (status === 'novo' || status === 'em_atendimento') setStatus('orcamento');
+            setHistoryVersion((version) => version + 1);
           }}
         />
+
+        <RequestHistory requestId={initialRequest.id} refreshKey={historyVersion} />
       </section>
     </main>
   );

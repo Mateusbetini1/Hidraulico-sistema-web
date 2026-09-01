@@ -9,9 +9,10 @@
 5. **Abra os detalhes:** mostre a descrição completa e os atalhos de contato com o cliente.
 6. **Mude o status:** selecione `Em atendimento` ou `Orçamento` e retorne ao painel para mostrar a atualização dos indicadores.
 7. **Monte o orçamento:** adicione um produto, informe quantidade e valor e mostre o cálculo automático do total.
-8. **Explique o banco:** apresente brevemente clientes, solicitações, itens de orçamento e histórico de status.
-9. **Gere a proposta:** preencha as condições comerciais, salve e faça o download do PDF.
-10. **Conclua com a evolução:** histórico de observações e automações com n8n serão as próximas entregas.
+8. **Registre uma atividade:** adicione uma observação ou contato e mostre data, responsável e mudanças de status na mesma linha do tempo.
+9. **Explique o banco:** apresente brevemente clientes, solicitações, itens de orçamento e os dois tipos de histórico.
+10. **Gere a proposta:** preencha as condições comerciais, salve e faça o download do PDF.
+11. **Conclua com a evolução:** automações com n8n, atendimento por LLM e agendamento são as próximas entregas previstas no artigo.
 
 ## Mensagem central
 

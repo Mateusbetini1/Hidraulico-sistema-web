@@ -16,6 +16,7 @@ Projeto desenvolvido como Trabalho de Conclusão de Curso para centralizar o ate
 - geração e download da proposta comercial em PDF;
 - alteração de status e atualização automática dos indicadores;
 - histórico das mudanças de status no banco de dados.
+- linha do tempo com observações, contatos, recebimento de medidas e envio de propostas.
 
 ## Tecnologias
 
@@ -78,7 +79,7 @@ public/          Imagens e ícones públicos
 
 ## Próximas etapas sugeridas
 
-1. permitir registrar observações no histórico comercial;
-2. configurar os dados cadastrais completos da WG Hidráulica;
-3. integrar notificações e automações com n8n;
+1. configurar os dados cadastrais completos da WG Hidráulica;
+2. integrar notificações e automações com n8n;
+3. conectar o atendimento automatizado e os agendamentos descritos no artigo;
 4. adicionar testes automatizados e indicadores históricos.

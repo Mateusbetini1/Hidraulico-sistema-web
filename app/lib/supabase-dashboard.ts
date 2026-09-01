@@ -25,6 +25,16 @@ export type DadosProposta = {
   observacoes: string | null;
 };
 
+export type HistoricoComercial = {
+  id: string;
+  tipo: 'status' | 'observacao' | 'contato' | 'medidas_recebidas' | 'proposta_enviada';
+  descricao: string;
+  responsavel: string;
+  status_anterior: string | null;
+  status_novo: string | null;
+  criado_em: string;
+};
+
 function getConfig() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_PUBLISHABLE_KEY;

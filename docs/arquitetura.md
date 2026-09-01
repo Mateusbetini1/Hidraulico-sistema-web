@@ -17,6 +17,8 @@ flowchart LR
     API2 --> Painel[Painel comercial]
     Painel --> Status[Alteração de status]
     Status --> Banco
+    Painel --> Atividade[Observação ou evento comercial]
+    Atividade --> Banco
 ```
 
 ## Fluxo de uma nova solicitação
@@ -55,6 +57,16 @@ flowchart LR
 5. O navegador recebe o arquivo com tipo `application/pdf` para download.
 
 O PDF é gerado no servidor. Assim, dados protegidos e regras comerciais não precisam ser enviados a uma biblioteca externa.
+
+## Fluxo do histórico comercial
+
+1. Mudanças de status continuam sendo gravadas automaticamente em `historico_status`.
+2. A equipe pode registrar observações, contatos, medidas recebidas e propostas enviadas.
+3. A API identifica o responsável pelo e-mail autenticado e não aceita essa identidade do navegador.
+4. A função protegida persiste a atividade em `atividades_comerciais`.
+5. A linha do tempo combina os dois conjuntos de eventos em ordem cronológica.
+
+Essa separação mantém fatos do fluxo, como uma mudança de etapa, distintos das anotações de acompanhamento feitas pela equipe.
 
 ## Divisão de responsabilidades
 

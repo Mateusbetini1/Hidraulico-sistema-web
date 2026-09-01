@@ -38,6 +38,10 @@ O melhor caminho é acompanhar uma solicitação do início ao fim. Assim, cada 
 
 `app/components/proposal-settings.tsx` salva as condições comerciais. O endpoint `app/api/painel/solicitacoes/[id]/proposta` consulta todos os dados protegidos e usa `app/lib/proposal-pdf.ts` para montar o documento. A biblioteca `pdf-lib` gera o arquivo no próprio backend, sem enviar informações do cliente para serviços externos.
 
+### 9. Histórico do atendimento
+
+`app/components/request-history.tsx` reúne a inclusão de atividades e a linha do tempo. A rota `app/api/painel/solicitacoes/[id]/historico` usa o e-mail administrativo identificado no servidor; por isso, o navegador não pode escolher quem aparece como responsável. A quinta migração mantém observações em `atividades_comerciais` e combina esses registros com `historico_status` somente na consulta.
+
 ## Padrões adotados
 
 - **Nomes ligados ao domínio:** `Solicitacao`, `cliente_nome`, `updateStatus` e `historico_status` representam conceitos do processo comercial.
@@ -63,3 +67,6 @@ Para preservar rastreabilidade e permitir indicadores de tempo, conversão e pro
 
 **Onde o n8n entrará?**  
 Depois do registro ou de uma mudança de status, poderá disparar notificações, tarefas e integrações sem substituir o núcleo do sistema.
+
+**Por que existem duas tabelas de histórico?**
+`historico_status` registra automaticamente mudanças de etapa, enquanto `atividades_comerciais` guarda ações e observações humanas. A linha do tempo une as duas sem misturar responsabilidades.
