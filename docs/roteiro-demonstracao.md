@@ -10,7 +10,8 @@
 6. **Mude o status:** selecione `Em atendimento` ou `Orçamento` e retorne ao painel para mostrar a atualização dos indicadores.
 7. **Monte o orçamento:** adicione um produto, informe quantidade e valor e mostre o cálculo automático do total.
 8. **Explique o banco:** apresente brevemente clientes, solicitações, itens de orçamento e histórico de status.
-9. **Conclua com a evolução:** geração da proposta em PDF e automações com n8n serão as próximas entregas.
+9. **Gere a proposta:** preencha as condições comerciais, salve e faça o download do PDF.
+10. **Conclua com a evolução:** histórico de observações e automações com n8n serão as próximas entregas.
 
 ## Mensagem central
 

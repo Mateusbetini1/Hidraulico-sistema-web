@@ -12,6 +12,8 @@ Projeto desenvolvido como Trabalho de Conclusão de Curso para centralizar o ate
 - consulta dos dados completos de cada solicitação;
 - criação, edição e remoção de itens do orçamento;
 - cálculo automático do valor total da proposta;
+- cadastro das condições comerciais da proposta;
+- geração e download da proposta comercial em PDF;
 - alteração de status e atualização automática dos indicadores;
 - histórico das mudanças de status no banco de dados.
 
@@ -76,7 +78,7 @@ public/          Imagens e ícones públicos
 
 ## Próximas etapas sugeridas
 
-1. permitir registrar observações comerciais;
-2. gerar a proposta comercial em PDF;
+1. permitir registrar observações no histórico comercial;
+2. configurar os dados cadastrais completos da WG Hidráulica;
 3. integrar notificações e automações com n8n;
 4. adicionar testes automatizados e indicadores históricos.

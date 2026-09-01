@@ -2,6 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import type { ItemOrcamento } from '../lib/supabase-dashboard';
+import { ProposalSettings } from './proposal-settings';
 
 type ItemForm = {
   itemId: string;
@@ -246,7 +247,8 @@ export function QuoteBuilder({
         <span>Valor total do orçamento</span>
         <strong>{currency(total)}</strong>
       </footer>
+
+      <ProposalSettings requestId={requestId} hasItems={items.length > 0} />
     </section>
   );
 }
-

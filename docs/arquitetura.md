@@ -46,6 +46,16 @@ flowchart LR
 5. Essa transição também é registrada no histórico de status.
 6. A interface consulta os itens novamente e calcula subtotais e total para exibição.
 
+## Fluxo de geração da proposta
+
+1. A equipe registra validade, prazo de entrega, condições de pagamento e observações.
+2. Esses dados são persistidos em `orcamentos`, vinculados à solicitação.
+3. O endpoint protegido consulta solicitação, itens e condições comerciais.
+4. O backend calcula o valor total e monta um documento A4 com identidade visual da WG.
+5. O navegador recebe o arquivo com tipo `application/pdf` para download.
+
+O PDF é gerado no servidor. Assim, dados protegidos e regras comerciais não precisam ser enviados a uma biblioteca externa.
+
 ## Divisão de responsabilidades
 
 | Camada | Responsabilidade | Exemplos |

@@ -7,6 +7,7 @@ erDiagram
     CLIENTES ||--o{ SOLICITACOES : realiza
     SOLICITACOES ||--o{ ITENS_ORCAMENTO : possui
     SOLICITACOES ||--o{ HISTORICO_STATUS : registra
+    SOLICITACOES ||--o| ORCAMENTOS : define
 
     CLIENTES {
         uuid id PK
@@ -36,6 +37,14 @@ erDiagram
         text status_novo
         text observacao
     }
+    ORCAMENTOS {
+        uuid id PK
+        uuid solicitacao_id FK
+        integer validade_dias
+        text prazo_entrega
+        text condicoes_pagamento
+        text observacoes
+    }
 ```
 
 ## Tabelas
@@ -45,6 +54,7 @@ erDiagram
 - `itens_orcamento`: estrutura preparada para os produtos, quantidades e valores de uma proposta.
 - `historico_status`: trilha das alterações realizadas durante o atendimento.
 - `private.painel_config`: guarda somente o hash da chave usada pelas funções administrativas.
+- `orcamentos`: condições comerciais usadas na geração da proposta em PDF.
 
 ## Status comerciais
 
@@ -75,5 +85,6 @@ Essa chave não é enviada ao navegador. O banco armazena apenas seu hash SHA-25
 - `202609010001_initial_commercial_schema.sql`: cria tabelas, índices, RLS e o cadastro público.
 - `202609010002_dashboard_access.sql`: cria a configuração privada e as funções do painel.
 - `202609010003_quote_items.sql`: cria as funções protegidas de consulta, gravação e remoção dos itens do orçamento.
+- `202609010004_proposal_details.sql`: cria os dados comerciais e as funções protegidas usadas pelo gerador de proposta.
 
 As migrações documentam a evolução do banco e permitem reproduzir sua estrutura em outro ambiente.

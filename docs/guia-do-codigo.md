@@ -34,6 +34,10 @@ O melhor caminho é acompanhar uma solicitação do início ao fim. Assim, cada 
 
 `app/components/quote-builder.tsx` controla o formulário e a lista de itens. As rotas em `app/api/painel/solicitacoes/[id]/itens` validam os dados antes de chamar as funções da terceira migração. O total não é armazenado separadamente: ele é calculado multiplicando quantidade e valor unitário, evitando inconsistências quando um item é editado.
 
+### 8. Proposta em PDF
+
+`app/components/proposal-settings.tsx` salva as condições comerciais. O endpoint `app/api/painel/solicitacoes/[id]/proposta` consulta todos os dados protegidos e usa `app/lib/proposal-pdf.ts` para montar o documento. A biblioteca `pdf-lib` gera o arquivo no próprio backend, sem enviar informações do cliente para serviços externos.
+
 ## Padrões adotados
 
 - **Nomes ligados ao domínio:** `Solicitacao`, `cliente_nome`, `updateStatus` e `historico_status` representam conceitos do processo comercial.

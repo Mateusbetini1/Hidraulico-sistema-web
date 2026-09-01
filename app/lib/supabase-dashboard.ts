@@ -18,6 +18,13 @@ export type ItemOrcamento = {
   criado_em: string;
 };
 
+export type DadosProposta = {
+  validade_dias: number;
+  prazo_entrega: string | null;
+  condicoes_pagamento: string | null;
+  observacoes: string | null;
+};
+
 function getConfig() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_PUBLISHABLE_KEY;
