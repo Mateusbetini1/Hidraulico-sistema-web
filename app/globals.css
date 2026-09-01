@@ -23,6 +23,7 @@ button { font:inherit; }
 h1 { margin:0; font-size:clamp(28px,3vw,38px); line-height:1.05; letter-spacing:-.035em; }
 .subtitle { margin:8px 0 0; color:var(--muted); font-size:14px; }
 .primary-button { min-height:42px; padding:0 18px; border:0; border-radius:4px; background:var(--yellow); color:var(--navy); cursor:pointer; font-weight:700; }
+.primary-link{display:inline-flex;align-items:center;justify-content:center}
 .primary-button:hover { background:#f2ba00; }
 .metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; margin-bottom:18px; }
 .metrics article,.panel { padding:19px; border:1px solid var(--line); border-radius:5px; background:var(--surface); }
@@ -40,8 +41,8 @@ h1 { margin:0; font-size:clamp(28px,3vw,38px); line-height:1.05; letter-spacing:
 .opportunity strong { display:block; font-size:13px; }
 .opportunity p { margin:4px 0; color:var(--muted); font-size:12px; }
 .opportunity small { color:#8692a4; font-size:11px; }
-.stage { padding:6px 9px; border-radius:3px; font-size:10px; font-weight:700; white-space:nowrap; }
-.stage-0 { background:#edf0f6; color:var(--navy); }.stage-1 { background:#fff2b8; color:#6f5200; }.stage-2 { background:#e5f5ed; color:#15784d; }
+.stage { padding:7px 25px 7px 9px; border:0; border-radius:3px; font-size:10px; font-weight:700; white-space:nowrap; cursor:pointer; }
+.stage-novo { background:#edf0f6; color:var(--navy); }.stage-em_atendimento { background:#fff2b8; color:#6f5200; }.stage-orcamento,.stage-negociacao { background:#e5f5ed; color:#15784d; }.stage-concluido{background:#dff4e9;color:#0d6d43}.stage-cancelado{background:#f5e4e4;color:#8f2b2b}
 .funnel-list { display:grid; gap:17px; padding-top:4px; }
 .funnel-row>div:first-child { display:flex; justify-content:space-between; margin-bottom:7px; color:var(--muted); font-size:12px; }
 .funnel-row strong { color:var(--ink); font-size:14px; }
@@ -51,8 +52,9 @@ h1 { margin:0; font-size:clamp(28px,3vw,38px); line-height:1.05; letter-spacing:
 .automation-panel p:last-child { margin:5px 0 0; color:#c3ccdc; font-size:12px; }
 .automation-icon { display:grid; width:44px; height:44px; place-items:center; border-radius:3px; background:var(--yellow); color:var(--navy); font-size:22px; }
 .automation-result { text-align:right; }.automation-result span { display:block; color:#7ee2b8; font-size:12px; font-weight:650; }.automation-result small { color:#c3ccdc; }
+.real-opportunity{grid-template-columns:42px minmax(0,1fr) auto}.opportunity-copy p{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2}.status-control{justify-self:end}.status-control select:disabled{cursor:wait;opacity:.65}.refresh-button{border:0;background:transparent;color:var(--blue);font-size:12px;font-weight:650;cursor:pointer}.dashboard-state{margin:0;padding:32px 8px;color:var(--muted);font-size:13px;text-align:center}.dashboard-alert{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;padding:12px 15px;border-left:3px solid #c73535;background:#fff0f0;color:#8d2525;font-size:12px}.dashboard-alert button{border:0;background:transparent;color:inherit;font-weight:700;cursor:pointer}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.access-denied{display:grid;min-height:100vh;place-content:center;justify-items:start;padding:32px;background:#f5f7fa}.access-denied h1{margin-top:12px}.access-denied p:not(.public-kicker){max-width:500px;color:var(--muted);line-height:1.6}.access-denied a{margin-top:10px;padding:12px 18px;background:var(--yellow);font-weight:750}.login-description{margin:0;color:var(--muted);line-height:1.6}.login-button{display:grid;min-height:44px;place-items:center;background:var(--yellow);color:var(--navy);font-weight:800}
 @media(max-width:900px){.app-shell{grid-template-columns:82px minmax(0,1fr)}.sidebar{padding-inline:12px}.brand>span:last-child,.profile>span:last-child,.nav-item span{display:none}.nav-item{justify-content:center}.profile{justify-content:center}.content-grid{grid-template-columns:1fr}}
-@media(max-width:640px){.app-shell{display:block}.sidebar{position:static;width:100%;height:auto;padding:14px}.brand{padding-bottom:14px}.brand>span:last-child{display:block}.sidebar nav{grid-template-columns:repeat(5,1fr)}.nav-item{padding:9px 4px}.profile{display:none}.workspace{padding:24px 16px 36px}.topbar{align-items:flex-start}.primary-button{width:44px;padding:0;font-size:0}.primary-button::first-letter{font-size:20px}.metrics{grid-template-columns:1fr}.opportunity{grid-template-columns:38px minmax(0,1fr)}.company-mark{width:38px;height:38px}.stage{grid-column:2;justify-self:start}.automation-panel{align-items:start}}
+@media(max-width:640px){.app-shell{display:block}.sidebar{position:static;width:100%;height:auto;padding:14px}.brand{padding-bottom:14px}.brand>span:last-child{display:block}.sidebar nav{grid-template-columns:repeat(5,1fr)}.nav-item{padding:9px 4px}.profile{display:none}.workspace{padding:24px 16px 36px}.topbar{align-items:flex-start}.primary-button{width:44px;padding:0;font-size:0}.primary-button::first-letter{font-size:20px}.metrics{grid-template-columns:1fr}.opportunity{grid-template-columns:38px minmax(0,1fr)}.company-mark{width:38px;height:38px}.stage{grid-column:2;justify-self:start}.automation-panel{align-items:start}.real-opportunity{grid-template-columns:38px minmax(0,1fr)}.status-control{grid-column:2;justify-self:start}}
 
 /* Site público — linguagem visual do protótipo WG Hidráulica */
 .public-site{min-height:100vh;background:#fff;color:var(--navy)}

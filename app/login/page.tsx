@@ -1,1 +1,27 @@
-export default function LoginPage(){return <main className="login-page"><section className="login-brand"><a className="public-logo inverse" href="/"><span>WG</span><strong>WG Hidráulica</strong></a><div><p className="public-kicker">Área restrita</p><h1>Sistema interno de produção</h1><p>Central comercial, propostas e automações integradas.</p></div></section><section className="login-form-area"><form className="login-form" action="/sistema"><p className="public-kicker">Acesso da equipe</p><h2>Entrar</h2><label>E-mail<input type="email" name="email" placeholder="nome@empresa.com.br" required/></label><label>Senha<input type="password" name="password" placeholder="Sua senha" required/></label><button type="submit">Entrar no sistema</button><small>Ambiente demonstrativo. A autenticação será conectada ao Supabase.</small></form></section></main>}
+export default function LoginPage() {
+  return (
+    <main className="login-page">
+      <section className="login-brand">
+        <a className="public-logo inverse" href="/">
+          <span>WG</span><strong>WG Hidráulica</strong>
+        </a>
+        <div>
+          <p className="public-kicker">Área restrita</p>
+          <h1>Sistema interno de produção</h1>
+          <p>Central comercial, propostas e automações integradas.</p>
+        </div>
+      </section>
+      <section className="login-form-area">
+        <div className="login-form">
+          <p className="public-kicker">Acesso da equipe</p>
+          <h2>Entrar</h2>
+          <p className="login-description">
+            O painel utiliza a identidade autorizada do ambiente para proteger os dados comerciais.
+          </p>
+          <a className="login-button" href="/sistema" target="_top">Entrar no sistema</a>
+          <small>Apenas contas administrativas autorizadas podem consultar e alterar solicitações.</small>
+        </div>
+      </section>
+    </main>
+  );
+}
