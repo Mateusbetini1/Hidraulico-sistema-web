@@ -10,6 +10,7 @@ create table if not exists private.painel_config (
   atualizado_em timestamptz not null default now()
 );
 
+alter table private.painel_config enable row level security;
 revoke all on private.painel_config from public, anon, authenticated;
 
 create or replace function private.validar_chave_painel(p_chave text)
@@ -23,7 +24,7 @@ as $$
     select 1
     from private.painel_config
     where id = true
-      and chave_hash = encode(digest(coalesce(p_chave, ''), 'sha256'), 'hex')
+      and chave_hash = encode(extensions.digest(coalesce(p_chave, ''), 'sha256'), 'hex')
   );
 $$;
 
