@@ -10,6 +10,14 @@ export type Solicitacao = {
   email: string | null;
 };
 
+export type ItemOrcamento = {
+  id: string;
+  descricao: string;
+  quantidade: number;
+  valor_unitario: number;
+  criado_em: string;
+};
+
 function getConfig() {
   const url = process.env.SUPABASE_URL;
   const key = process.env.SUPABASE_PUBLISHABLE_KEY;

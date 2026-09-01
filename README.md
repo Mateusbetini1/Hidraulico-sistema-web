@@ -10,6 +10,8 @@ Projeto desenvolvido como Trabalho de Conclusão de Curso para centralizar o ate
 - painel comercial protegido;
 - listagem das solicitações reais recebidas;
 - consulta dos dados completos de cada solicitação;
+- criação, edição e remoção de itens do orçamento;
+- cálculo automático do valor total da proposta;
 - alteração de status e atualização automática dos indicadores;
 - histórico das mudanças de status no banco de dados.
 
@@ -75,6 +77,6 @@ public/          Imagens e ícones públicos
 ## Próximas etapas sugeridas
 
 1. permitir registrar observações comerciais;
-2. criar e editar itens de orçamento;
+2. gerar a proposta comercial em PDF;
 3. integrar notificações e automações com n8n;
 4. adicionar testes automatizados e indicadores históricos.

@@ -37,6 +37,15 @@ flowchart LR
 5. O status anterior, o novo status e uma observação são registrados em `historico_status`.
 6. A interface atualiza os cartões e o funil sem recarregar a página inteira.
 
+## Fluxo de criação do orçamento
+
+1. A equipe abre os detalhes de uma solicitação e informa descrição, quantidade e valor unitário.
+2. A API administrativa valida os números e chama `salvar_item_orcamento_painel`.
+3. A função cria ou atualiza o item garantindo que ele pertença à solicitação correta.
+4. Ao salvar o primeiro item, uma solicitação nova ou em atendimento passa para `orcamento`.
+5. Essa transição também é registrada no histórico de status.
+6. A interface consulta os itens novamente e calcula subtotais e total para exibição.
+
 ## Divisão de responsabilidades
 
 | Camada | Responsabilidade | Exemplos |
@@ -48,4 +57,3 @@ flowchart LR
 | Hospedagem | Executar a aplicação e identificar o usuário | Sites/Cloudflare |
 
 Essa separação facilita a manutenção: a tela não acessa as tabelas diretamente, e as regras críticas permanecem no backend e no banco.
-

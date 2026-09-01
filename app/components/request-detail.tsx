@@ -8,6 +8,7 @@ import {
   isCommercialStatus,
 } from '../lib/commercial-status';
 import type { Solicitacao } from '../lib/supabase-dashboard';
+import { QuoteBuilder } from './quote-builder';
 import { SystemSidebar } from './system-sidebar';
 
 function formatDate(value: string) {
@@ -119,16 +120,13 @@ export function RequestDetail({
           </aside>
         </section>
 
-        <section className="panel next-step-panel">
-          <div>
-            <p className="section-label">Próxima etapa do projeto</p>
-            <h2>Preparar orçamento</h2>
-            <p>A estrutura do banco já possui os itens de orçamento. A próxima entrega permitirá cadastrar produtos, quantidades e valores nesta solicitação.</p>
-          </div>
-          <span>Em desenvolvimento</span>
-        </section>
+        <QuoteBuilder
+          requestId={initialRequest.id}
+          onBudgetStarted={() => {
+            if (status === 'novo' || status === 'em_atendimento') setStatus('orcamento');
+          }}
+        />
       </section>
     </main>
   );
 }
-

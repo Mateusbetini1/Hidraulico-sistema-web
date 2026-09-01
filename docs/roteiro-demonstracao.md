@@ -8,8 +8,9 @@
 4. **Abra o painel:** em `/sistema`, mostre que a nova solicitação foi armazenada e aparece com status `Novo`.
 5. **Abra os detalhes:** mostre a descrição completa e os atalhos de contato com o cliente.
 6. **Mude o status:** selecione `Em atendimento` ou `Orçamento` e retorne ao painel para mostrar a atualização dos indicadores.
-7. **Explique o banco:** apresente brevemente clientes, solicitações, itens de orçamento e histórico de status.
-8. **Conclua com a evolução:** montagem do orçamento e automações com n8n serão as próximas entregas.
+7. **Monte o orçamento:** adicione um produto, informe quantidade e valor e mostre o cálculo automático do total.
+8. **Explique o banco:** apresente brevemente clientes, solicitações, itens de orçamento e histórico de status.
+9. **Conclua com a evolução:** geração da proposta em PDF e automações com n8n serão as próximas entregas.
 
 ## Mensagem central
 

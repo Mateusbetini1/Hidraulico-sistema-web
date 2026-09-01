@@ -30,6 +30,10 @@ O melhor caminho é acompanhar uma solicitação do início ao fim. Assim, cada 
 
 `app/sistema/solicitacoes/[id]/page.tsx` protege a rota e localiza o registro solicitado. `app/components/request-detail.tsx` apresenta a necessidade, os dados de contato e a alteração de status. Os rótulos válidos ficam centralizados em `app/lib/commercial-status.ts`, evitando regras diferentes entre a API e a interface.
 
+### 7. Montagem do orçamento
+
+`app/components/quote-builder.tsx` controla o formulário e a lista de itens. As rotas em `app/api/painel/solicitacoes/[id]/itens` validam os dados antes de chamar as funções da terceira migração. O total não é armazenado separadamente: ele é calculado multiplicando quantidade e valor unitário, evitando inconsistências quando um item é editado.
+
 ## Padrões adotados
 
 - **Nomes ligados ao domínio:** `Solicitacao`, `cliente_nome`, `updateStatus` e `historico_status` representam conceitos do processo comercial.

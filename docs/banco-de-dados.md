@@ -74,6 +74,6 @@ Essa chave não é enviada ao navegador. O banco armazena apenas seu hash SHA-25
 
 - `202609010001_initial_commercial_schema.sql`: cria tabelas, índices, RLS e o cadastro público.
 - `202609010002_dashboard_access.sql`: cria a configuração privada e as funções do painel.
+- `202609010003_quote_items.sql`: cria as funções protegidas de consulta, gravação e remoção dos itens do orçamento.
 
 As migrações documentam a evolução do banco e permitem reproduzir sua estrutura em outro ambiente.
-
