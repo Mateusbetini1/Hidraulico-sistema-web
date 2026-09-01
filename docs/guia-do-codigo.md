@@ -26,6 +26,10 @@ O melhor caminho é acompanhar uma solicitação do início ao fim. Assim, cada 
 
 `app/components/commercial-dashboard.tsx` busca as solicitações, calcula indicadores derivados e altera os status. Os dados são mantidos em estado React; quando um status muda, o item e os indicadores são atualizados imediatamente.
 
+### 6. Detalhes da solicitação
+
+`app/sistema/solicitacoes/[id]/page.tsx` protege a rota e localiza o registro solicitado. `app/components/request-detail.tsx` apresenta a necessidade, os dados de contato e a alteração de status. Os rótulos válidos ficam centralizados em `app/lib/commercial-status.ts`, evitando regras diferentes entre a API e a interface.
+
 ## Padrões adotados
 
 - **Nomes ligados ao domínio:** `Solicitacao`, `cliente_nome`, `updateStatus` e `historico_status` representam conceitos do processo comercial.
@@ -51,4 +55,3 @@ Para preservar rastreabilidade e permitir indicadores de tempo, conversão e pro
 
 **Onde o n8n entrará?**  
 Depois do registro ou de uma mudança de status, poderá disparar notificações, tarefas e integrações sem substituir o núcleo do sistema.
-

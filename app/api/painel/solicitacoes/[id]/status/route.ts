@@ -1,15 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getAdminEmail } from '../../../../../lib/admin-auth';
+import { isCommercialStatus } from '../../../../../lib/commercial-status';
 import { supabaseDashboardRpc } from '../../../../../lib/supabase-dashboard';
-
-const validStatuses = new Set([
-  'novo',
-  'em_atendimento',
-  'orcamento',
-  'negociacao',
-  'concluido',
-  'cancelado',
-]);
 
 export async function POST(
   request: Request,
@@ -28,7 +20,7 @@ export async function POST(
   const observacao =
     typeof payload?.observacao === 'string' ? payload.observacao.trim().slice(0, 500) : '';
 
-  if (!validStatuses.has(status)) {
+  if (!isCommercialStatus(status)) {
     return NextResponse.json({ message: 'Status inválido.' }, { status: 400 });
   }
 

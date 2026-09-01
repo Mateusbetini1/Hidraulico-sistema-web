@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { commercialStatusLabels, funnelStatuses } from '../lib/commercial-status';
 import type { Solicitacao } from '../lib/supabase-dashboard';
+import { SystemSidebar } from './system-sidebar';
 
 async function fetchSolicitacoes() {
   const response = await fetch('/api/painel/solicitacoes', { cache: 'no-store' });
@@ -14,17 +16,6 @@ async function fetchSolicitacoes() {
   if (!response.ok) throw new Error(result.message || 'Falha ao carregar.');
   return result.solicitacoes ?? [];
 }
-
-const statusLabels: Record<string, string> = {
-  novo: 'Novo',
-  em_atendimento: 'Em atendimento',
-  orcamento: 'Orçamento',
-  negociacao: 'Negociação',
-  concluido: 'Concluído',
-  cancelado: 'Cancelado',
-};
-
-const funnelStatuses = ['novo', 'em_atendimento', 'orcamento', 'negociacao'];
 
 function initials(name: string) {
   return name
@@ -97,7 +88,7 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
     () =>
       funnelStatuses.map((status) => ({
         status,
-        label: statusLabels[status],
+        label: commercialStatusLabels[status],
         value: solicitacoes.filter((item) => item.status === status).length,
       })),
     [solicitacoes],
@@ -129,23 +120,7 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
 
   return (
     <main className="app-shell">
-      <aside className="sidebar">
-        <div className="brand">
-          <span className="brand-mark">WG</span>
-          <span>WG Hidráulica<small>Central comercial</small></span>
-        </div>
-        <nav aria-label="Navegação principal">
-          <a className="nav-item active" href="#inicio">▦ <span>Visão geral</span></a>
-          <a className="nav-item" href="#oportunidades">◎ <span>Solicitações</span></a>
-          <a className="nav-item" href="#orcamentos">▤ <span>Orçamentos</span></a>
-          <a className="nav-item" href="#automacoes">⌁ <span>Automações</span></a>
-          <Link className="nav-item" href="/">↗ <span>Ver site</span></Link>
-        </nav>
-        <div className="profile">
-          <span className="avatar">{initials(adminEmail)}</span>
-          <span>{adminEmail}<small>Administrador</small></span>
-        </div>
-      </aside>
+      <SystemSidebar adminEmail={adminEmail} />
 
       <section className="workspace" id="inicio">
         <header className="topbar">
@@ -189,19 +164,22 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
                     <p>{item.descricao}</p>
                     <small>{item.cliente_nome} · {item.whatsapp} · {formatDate(item.criado_em)}</small>
                   </div>
-                  <label className="status-control">
-                    <span className="sr-only">Status de {item.cliente_nome}</span>
-                    <select
-                      value={item.status}
-                      disabled={updatingId === item.id}
-                      onChange={(event) => void updateStatus(item.id, event.target.value)}
-                      className={`stage stage-${item.status}`}
-                    >
-                      {Object.entries(statusLabels).map(([value, label]) => (
-                        <option value={value} key={value}>{label}</option>
-                      ))}
-                    </select>
-                  </label>
+                  <div className="opportunity-actions">
+                    <Link href={`/sistema/solicitacoes/${item.id}`}>Ver detalhes →</Link>
+                    <label className="status-control">
+                      <span className="sr-only">Status de {item.cliente_nome}</span>
+                      <select
+                        value={item.status}
+                        disabled={updatingId === item.id}
+                        onChange={(event) => void updateStatus(item.id, event.target.value)}
+                        className={`stage stage-${item.status}`}
+                      >
+                        {Object.entries(commercialStatusLabels).map(([value, label]) => (
+                          <option value={value} key={value}>{label}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
                 </article>
               ))}
             </div>

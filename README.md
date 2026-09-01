@@ -9,6 +9,7 @@ Projeto desenvolvido como Trabalho de Conclusão de Curso para centralizar o ate
 - armazenamento de clientes e solicitações no Supabase;
 - painel comercial protegido;
 - listagem das solicitações reais recebidas;
+- consulta dos dados completos de cada solicitação;
 - alteração de status e atualização automática dos indicadores;
 - histórico das mudanças de status no banco de dados.
 
@@ -73,9 +74,7 @@ public/          Imagens e ícones públicos
 
 ## Próximas etapas sugeridas
 
-1. criar a tela de detalhes de uma solicitação;
-2. permitir registrar observações comerciais;
-3. criar e editar itens de orçamento;
-4. integrar notificações e automações com n8n;
-5. adicionar testes automatizados e indicadores históricos.
-
+1. permitir registrar observações comerciais;
+2. criar e editar itens de orçamento;
+3. integrar notificações e automações com n8n;
+4. adicionar testes automatizados e indicadores históricos.
