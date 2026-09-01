@@ -1,11 +1,48 @@
+import Link from 'next/link';
+
 export function PublicHeader() {
-  return <header className="public-header"><a className="public-logo" href="/" aria-label="WG Hidráulica, início"><span>WG</span><strong>WG Hidráulica</strong></a><nav aria-label="Navegação do site"><a href="/">Início</a><a href="/quem-somos">Quem somos</a><a href="/produtos">Produtos</a><a href="/aplicacoes">Aplicações</a><a href="/contato">Contato</a></nav><a className="quote-link" href="/contato">Solicitar orçamento</a></header>;
+  return (
+    <header className="public-header">
+      <Link className="public-logo" href="/" aria-label="WG Hidráulica, início">
+        <span>WG</span><strong>WG Hidráulica</strong>
+      </Link>
+      <nav aria-label="Navegação do site">
+        <Link href="/">Início</Link>
+        <Link href="/quem-somos">Quem somos</Link>
+        <Link href="/produtos">Produtos</Link>
+        <Link href="/aplicacoes">Aplicações</Link>
+        <Link href="/contato">Contato</Link>
+      </nav>
+      <Link className="quote-link" href="/contato">Solicitar orçamento</Link>
+    </header>
+  );
 }
 
 export function PublicFooter() {
-  return <footer className="public-footer"><div className="public-logo inverse"><span>WG</span><strong>WG Hidráulica</strong></div><p>Soluções hidráulicas para operações que não podem parar.</p><div><strong>Navegação</strong><a href="/produtos">Produtos</a><a href="/aplicacoes">Aplicações</a><a href="/contato">Contato</a></div><div><strong>Sistema</strong><a href="/login">Acesso interno</a></div></footer>;
+  return (
+    <footer className="public-footer">
+      <div className="public-logo inverse"><span>WG</span><strong>WG Hidráulica</strong></div>
+      <p>Soluções hidráulicas para operações que não podem parar.</p>
+      <div>
+        <strong>Navegação</strong>
+        <Link href="/produtos">Produtos</Link>
+        <Link href="/aplicacoes">Aplicações</Link>
+        <Link href="/contato">Contato</Link>
+      </div>
+      <div>
+        <strong>Sistema</strong>
+        <Link href="/login">Acesso interno</Link>
+      </div>
+    </footer>
+  );
 }
 
 export function PageHero({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
-  return <section className="page-hero"><p className="public-kicker">{eyebrow}</p><h1>{title}</h1><p>{text}</p></section>;
+  return (
+    <section className="page-hero">
+      <p className="public-kicker">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p>{text}</p>
+    </section>
+  );
 }

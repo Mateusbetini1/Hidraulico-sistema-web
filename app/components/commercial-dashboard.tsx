@@ -1,7 +1,19 @@
 'use client';
 
+import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Solicitacao } from '../lib/supabase-dashboard';
+
+async function fetchSolicitacoes() {
+  const response = await fetch('/api/painel/solicitacoes', { cache: 'no-store' });
+  const result = (await response.json()) as {
+    solicitacoes?: Solicitacao[];
+    message?: string;
+  };
+
+  if (!response.ok) throw new Error(result.message || 'Falha ao carregar.');
+  return result.solicitacoes ?? [];
+}
 
 const statusLabels: Record<string, string> = {
   novo: 'Novo',
@@ -41,13 +53,7 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
   const loadSolicitacoes = useCallback(async () => {
     setError('');
     try {
-      const response = await fetch('/api/painel/solicitacoes', { cache: 'no-store' });
-      const result = (await response.json()) as {
-        solicitacoes?: Solicitacao[];
-        message?: string;
-      };
-      if (!response.ok) throw new Error(result.message || 'Falha ao carregar.');
-      setSolicitacoes(result.solicitacoes ?? []);
+      setSolicitacoes(await fetchSolicitacoes());
     } catch (loadError) {
       setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar.');
     } finally {
@@ -56,8 +62,25 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
   }, []);
 
   useEffect(() => {
-    void loadSolicitacoes();
-  }, [loadSolicitacoes]);
+    let isActive = true;
+
+    fetchSolicitacoes()
+      .then((items) => {
+        if (isActive) setSolicitacoes(items);
+      })
+      .catch((loadError: unknown) => {
+        if (isActive) {
+          setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar.');
+        }
+      })
+      .finally(() => {
+        if (isActive) setLoading(false);
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   const metrics = useMemo(() => {
     const abertas = solicitacoes.filter(
@@ -116,7 +139,7 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
           <a className="nav-item" href="#oportunidades">◎ <span>Solicitações</span></a>
           <a className="nav-item" href="#orcamentos">▤ <span>Orçamentos</span></a>
           <a className="nav-item" href="#automacoes">⌁ <span>Automações</span></a>
-          <a className="nav-item" href="/">↗ <span>Ver site</span></a>
+          <Link className="nav-item" href="/">↗ <span>Ver site</span></Link>
         </nav>
         <div className="profile">
           <span className="avatar">{initials(adminEmail)}</span>
@@ -131,7 +154,7 @@ export function CommercialDashboard({ adminEmail }: { adminEmail: string }) {
             <h1>Central comercial</h1>
             <p className="subtitle">Solicitações reais recebidas pelo site.</p>
           </div>
-          <a className="primary-button primary-link" href="/contato">+ Nova oportunidade</a>
+          <Link className="primary-button primary-link" href="/contato">+ Nova oportunidade</Link>
         </header>
 
         <section className="metrics" aria-label="Resumo comercial">

@@ -22,6 +22,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: 'Dados inválidos.' }, { status: 400 });
   }
 
+  // Campo invisível para usuários: robôs costumam preenchê-lo automaticamente.
   if (text(payload.website, 200)) {
     return NextResponse.json({ message: 'Solicitação enviada com sucesso.' });
   }

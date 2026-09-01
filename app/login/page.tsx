@@ -1,10 +1,12 @@
+import Link from 'next/link';
+
 export default function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-brand">
-        <a className="public-logo inverse" href="/">
+        <Link className="public-logo inverse" href="/">
           <span>WG</span><strong>WG Hidráulica</strong>
-        </a>
+        </Link>
         <div>
           <p className="public-kicker">Área restrita</p>
           <h1>Sistema interno de produção</h1>
@@ -18,7 +20,7 @@ export default function LoginPage() {
           <p className="login-description">
             O painel utiliza a identidade autorizada do ambiente para proteger os dados comerciais.
           </p>
-          <a className="login-button" href="/sistema" target="_top">Entrar no sistema</a>
+          <Link className="login-button" href="/sistema" target="_top">Entrar no sistema</Link>
           <small>Apenas contas administrativas autorizadas podem consultar e alterar solicitações.</small>
         </div>
       </section>

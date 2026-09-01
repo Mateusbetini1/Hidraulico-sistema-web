@@ -9,6 +9,7 @@ export function getAdminEmail(headers: HeaderReader) {
     .map((item) => item.trim().toLowerCase())
     .filter(Boolean);
 
+  // O ambiente local não fornece o cabeçalho de identidade da hospedagem.
   if (process.env.NODE_ENV !== 'production') {
     return email || 'desenvolvimento@local';
   }

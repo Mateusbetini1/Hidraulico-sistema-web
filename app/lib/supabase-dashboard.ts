@@ -27,6 +27,7 @@ export async function supabaseDashboardRpc<T>(
   parameters: Record<string, unknown> = {},
 ) {
   const { url, key, dashboardSecret } = getConfig();
+  // Esta chamada ocorre no servidor para que a chave do painel nunca chegue ao navegador.
   const response = await fetch(`${url}/rest/v1/rpc/${functionName}`, {
     method: 'POST',
     headers: {
