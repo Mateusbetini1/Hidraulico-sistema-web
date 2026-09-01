@@ -52,7 +52,11 @@ export async function POST(
 
   const { id } = await params;
   const payload = (await request.json().catch(() => null)) as ItemPayload | null;
-  const itemId = typeof payload?.itemId === 'string' ? payload.itemId : null;
+  // Um item novo ainda não possui UUID; texto vazio precisa chegar ao banco como null.
+  const itemId =
+    typeof payload?.itemId === 'string' && payload.itemId.trim()
+      ? payload.itemId.trim()
+      : null;
   const descricao = typeof payload?.descricao === 'string' ? payload.descricao.trim() : '';
   const quantidade = parseNumber(payload?.quantidade);
   const valorUnitario = parseNumber(payload?.valorUnitario);
@@ -86,4 +90,3 @@ export async function POST(
     );
   }
 }
-
